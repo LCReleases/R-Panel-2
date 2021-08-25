@@ -1,0 +1,106 @@
+.sessionContainer {
+  border-radius: 20px;
+
+  width: 13vw;
+  height: auto;
+
+  align-items: center;
+  float: right;
+
+  margin-top: 10vh;
+}
+
+.listTitleCard {
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.listTitle {
+  color: white;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.listSessionBackground {
+  background: #080808;
+  border: 2px solid #080808;
+
+  width: 20vw;
+  height: auto;
+  border-radius: 20px;
+
+  transform: translateX(-35%);
+  transition: border 0.5s;
+
+  margin-top: 10px;
+}
+
+.listSessionBackground:hover {
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.listSessionData {
+  color: white;
+}
+
+.listSessionDataCard {
+  justify-content: space-around;
+  font-size: 10pt;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.revenueBorder {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border: 2px solid #ffc107;
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 10px;
+}
+
+#sessionTitle {
+  font-size: 2vh;
+  font-weight: bold;
+  color: white;
+}
+
+#sessionLabel {
+  font-size: 1.5vh;
+  color: white;
+}
+
+#sessionRevenue {
+  color: #ffc107;
+  font-size: 1.7vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.toggleButton {
+  border: none;
+  border-radius: 200px;
+
+  background-color: white;
+  border: 2px solid black;
+
+  color: #242424;
+  width: 2.4vw;
+  height: 4.2vh;
+  float: right;
+
+  font-size: 1.5vw;
+}
+
+.toggleButton:hover {
+  background-color: #242424;
+  color: white;
+  border: 2px solid #ffc107;
+}

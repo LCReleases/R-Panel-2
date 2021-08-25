@@ -1,0 +1,81 @@
+#organize {
+  flex-direction: row;
+  display: flex;
+
+  height: 20vh;
+
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.cardContainer {
+  align-items: center;
+
+  width: 80vw;
+
+  justify-content: space-evenly;
+
+  margin-top: 4vh;
+  float: left;
+}
+
+.revenueCard {
+  background-color: #242424;
+  color: white;
+
+  height: auto;
+  width: 20vw;
+
+  font-size: 1.1vw;
+
+  align-items: center;
+
+  border-radius: 10px;
+  border-width: 0.5px;
+
+  padding-top: 5px;
+
+  justify-self: center;
+
+  padding: 1.2vw;
+
+  border: 1.5px solid #242424;
+  transition: transform 0.5s;
+}
+
+.revenueCard:hover {
+  border: 1.5px solid white;
+  cursor: default;
+
+  transform: scale(1.05);
+}
+
+.revenueIcon {
+  width: 2.8vw;
+  height: 5vh;
+
+  top: 50px;
+  margin-bottom: 20px;
+
+  transform: translate(-50%, -100%);
+
+  background-color: #ffc107;
+
+  text-align: center;
+
+  border-radius: 200px;
+  box-shadow: 1px 1px 10px 1px black;
+}
+
+.revenueLabel {
+  color: #ffc107;
+
+  font-weight: bold;
+  font-size: 2vw;
+
+  margin-top: 10px;
+}

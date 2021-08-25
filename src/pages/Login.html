@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+  <link type="text/css" rel="stylesheet" href="../css/LoginStyle.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RTS: Autenticação</title>
+</head>
+
+<body>
+
+  <div id="container-login">
+
+    <div id="login">
+      <img id="img" src="../images/icon.png" width="240px" height="240px">
+
+      <form id="formLogin">
+
+        <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
+
+        <button id="login_button" onclick="tryLogin()"><span class="entypo-lock buttonLock"></span><i
+            class="fa fa-lock"></i></span></button>
+
+        <span class="entypo-user inputUserIcon">
+          <i class="fa fa-user"></i>
+        </span>
+
+        <input type="text" id="user" class="user" placeholder="usúario" />
+
+        <span class="entypo-key inputPassIcon">
+          <i class="fa fa-key"></i>
+        </span>
+
+        <input type="password" id="pass" class="pass" placeholder="senha" />
+
+        <!-- <h4 id="result" style="text-align: center; color: white;"></h4> -->
+        <!-- <img id="loading" src="../images/loading.gif" width="60" height="60" style="visibility: hidden; display: block; -->
+        <!-- margin: 0 auto; position: absolute;"> -->
+      </form>
+      
+      <div id="errorBox">
+        <div id="errorText"></div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <h3 id="copyright">LC RTS <label for="copyright" id="version">[1.8.4]</label>
+    <br>
+    Todos os direitos reservados (C) 2020 Lobo Codes</h3>
+
+</body>
+
+<script src="../scripts/Login.js"></script>
+
+<script>
+  var $ = require('jquery')
+
+  const form = document.querySelector('form')
+  form.addEventListener('submit', submit)
+
+  function submit(event) {
+    event.preventDefault()
+    tryLogin()
+  }
+
+  var appVersion = require('electron').remote.app.getVersion();
+
+  document.getElementById('version').innerHTML = `[${appVersion}]`
+</script>
+
+</html>

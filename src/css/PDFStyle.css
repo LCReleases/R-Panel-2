@@ -1,0 +1,193 @@
+@font-face {
+  font-family: "Product Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"), local("OpenSans"),
+    url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2)
+      format("woff2");
+}
+
+* {
+  font-family: "Product Sans";
+}
+
+#logo {
+  float: left;
+}
+
+#headerText {
+  display: flex;
+  font-size: 5vh;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 2px solid black;
+
+}
+
+#container {
+  flex-direction: column;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#sessionRevenue {
+  margin-top: 50px;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  border: 2px solid black;
+  
+  height: 40vh;
+  width: 50vw;
+  font-size: 3vh;
+  
+  border-radius: 10px;
+}
+
+#tableRevenue {
+  width: 100%;
+  height: 80%;
+
+  border: 1px solid black;
+}
+
+#tableRevenue > tr {
+  border-right: 2px solid black;
+  border-top: none;
+  border-bottom: none;
+}
+
+.border {
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+span {
+  display: flex;
+  float: left;
+  margin-left: 50px;
+  width: 20px;
+}
+
+.align {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.bottom {
+  border-bottom: 2px solid black;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  float: right;
+}
+
+#footer {
+}
+
+.sessionChip {
+  border-collapse: collapse;
+  margin-top: 50px;
+}
+
+#chip {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border: 2px solid black;
+
+  margin-top: 50px;
+}
+
+#chipValues {
+  flex-direction: row;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.chip {
+  background-color: white;
+  color: black;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  
+  font-size: 2.5vh;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.chipValue {
+  background-color: #242424;
+  color: #ffc107;
+  font-size: 20pt;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  padding: 10px;
+  border-right: 2px solid #ffc107;
+  position: relative;
+}
+
+.revenue {
+  height: 50px;
+  margin-top: 30px;
+}
+
+.fa {
+  align-self: center;
+  margin-right: 10px;
+}
+
+.headerTable {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+#printDate {
+  height: 10vh;
+  width: 20vw;
+  border: 2px solid black;
+  position: absolute;
+
+  left: 5px;
+
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 13pt;
+  border-bottom: 1px solid black;
+}

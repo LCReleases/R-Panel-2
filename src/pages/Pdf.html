@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontawesome stylesheet-->
+    <script src="https://kit.fontawesome.com/9946dbb693.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
+    <script src="../utils/VanillaQR.min.js"></script>
+
+    <link href="../css/PDFStyle.css" rel="stylesheet">
+    <script src="../scripts/modules/CreatePdf.js"></script>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="logo" style="height: 1vh;" onclick="backToPanel()">
+            <img src="../images/icon.png" width="130vw" height="130vh">
+        </div>
+
+        <div id="headerText">
+            Resumo da Sessão 0
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="sessionRevenue">
+            <table id="tableRevenue">
+                <tr>
+                    <th class="border" style="padding-right: 1vw;">Faturamento</th>
+
+                    <div class="rightSide">
+                        <th class="border">
+
+                            <div style="display: flex;">
+                                <span class="fa fa-credit-card"></span>
+                                <div>Cartão</div>
+                            </div>
+                        </th>
+                        <th class="bottom">
+                            <div style="display: flex;">
+                                <span class="fa fa-money-bill"></span>
+                                <div>Dinheiro</div>
+                            </div>
+                        </th>
+                    </div>
+                </tr>
+                
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-ticket"></span>
+                            <div>Mulher</div>
+                        </div>
+                    </td>
+                    <!-- COUVERT CARTÃO -->
+                    <td id="womenCard" class="border">R$0,00</td>
+                    <!-- COUVERT DINHEIRO -->
+                    <td id="womenCash" class="bottom">R$0,00</td>
+                </tr>
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-ticket"></span>
+                            <div>Homem</div>
+                        </div>
+                    </td>
+                    <!-- COUVERT CARTÃO -->
+                    <td id="menCard" class="border">R$0,00</td>
+                    <!-- COUVERT DINHEIRO -->
+                    <td id="menCash" class="bottom">R$0,00</td>
+                </tr>
+
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-ticket"></span>
+                            <div>VIP</div>
+                        </div>
+                    </td>
+                    <!-- COUVERT CARTÃO -->
+                    <td id="vipCard" class="border">R$0,00</td>
+                    <!-- COUVERT DINHEIRO -->
+                    <td id="vipCash" class="bottom">R$0,00</td>
+                </tr>
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-ticket"></span>
+                            <div>VIP DIF</div>
+                        </div>
+                    </td>
+                    <!-- COUVERT CARTÃO -->
+                    <td id="differenceCard" class="border">R$0,00</td>
+                    <!-- COUVERT DINHEIRO -->
+                    <td id="differenceCash" class="bottom">R$0,00</td>
+                </tr>
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-coins"></span>
+                            <div> Fichas</div>
+                        </div>
+                    </td>
+                    <!-- FICHAS CARTÃO -->
+                    <td id="chipSold" class="border">R$0,00</td>
+                    <!-- FICHAS DINHEIRO -->
+                    <td class="bottom">R$0,00</td>
+                </tr>
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-money-bill"></span>
+                            <div>Dinheiro</div>
+                        </div>
+                    </td>
+                    <td class="border">R$0,00 </td>
+                    <!-- SALDO DINHEIRO -->
+                    <td id="totalCash" class="bottom">R$0,00</td>
+                </tr>
+                <tr>
+                    <td class="border">
+                        <div style="display: flex;">
+                            <span class="fa fa-credit-card"></span>
+                            <div>Cartão</div>
+                        </div>
+                    </td>
+                    <!-- SALDO CARTÃO -->
+                    <td id="totalCard" class="border">R$0,00</td>  
+                    <td class="bottom">R$0,00</td>
+                </tr>
+            </table>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <span class="fa fa-cash-register"></span>
+                <div id="totalSold">R$0,00</div>
+            </div>
+        </div>
+    </div>
+    <div class="headerTable">
+        <table class="sessionChip" style="margin-right: 40px;">
+            <tr>
+                <th class="chip">Ficha 1</th>
+                <td id="chip1" class="chip">000</th>
+                <th class="chip">Ficha 10</th>
+                <td id="chip10" class="chip">000</th>
+                <th class="chip">Ficha 100</th>
+                <td id="chip100" class="chip">000</th>
+            </tr>
+            <tr>
+                <th class="chip">Ficha 2</th>
+                <td id="chip2" class="chip">000</th>
+                <th class="chip">Ficha 30</th>
+                <td id="chip30" class="chip">000</th>
+                <th class="chip">Ficha 300</th>
+                <td id="chip300" class="chip">000</th>
+            </tr>
+            <tr>
+                <th class="chip">Ficha 5</th>
+                <td id="chip5" class="chip">000</th>
+                <th class="chip">Ficha 50</th>
+                <td id="chip50" class="chip">000</th>
+                <th class="chip">Ficha 500</th>
+                <td id="chip500" class="chip">000</th>
+            </tr>
+        </table>
+
+        <table class="sessionChip">
+            <!-- <tr>
+                <th class="chip">COUVERT</th>
+                <td id="couvertAmount" class="chip">000</td>
+            </tr> -->
+            <tr>
+                <th class="chip">HOMEM</th>
+                <td id="menAmount" class="chip">000</td>
+            </tr>
+            <tr>
+                <th class="chip">MULHER</th>
+                <td id="womenAmount" class="chip">000</td>
+            </tr>
+            <tr>
+                <th class="chip">VIP</th>
+                <td id="vipAmount" class="chip">000</td>
+            </tr>
+            <tr>
+                <th class="chip">VIP DIFERENÇA</th>
+                <td id="differenceAmount" class="chip">000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="footer">
+        <div id="qrcode">
+            
+        </div>
+
+        <div id="printDate">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; justify-content: space-evenly;">
+                <div id="date" class="text">Data de impressão: 12/12/2020</div>
+                <div id="user" class="text">Impresso por Lobo</div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    createPdf()
+</script>

@@ -1,0 +1,180 @@
+#organizeMenu {
+    flex-direction: row;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+.background {
+    background-color: #0B0B0B;
+
+    border-radius: 10px;
+
+    width: 70vw;
+    height: 55vh;
+
+    border: 2px solid #0B0B0B;
+
+    transition: transform 0.5s;
+}
+
+.background:hover {
+    border: 2px solid white;
+    transform: scale(1.01);
+}
+
+#currentSessionCard {
+    font-size: 1.5vw;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+}
+
+.currentSessionCardLabel {
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    font-size: 1.2vw;
+
+    justify-content: space-between;
+
+    color: #FFC107;
+}
+
+.currentSessionLabel {
+    text-align: center;
+    font-size: 1.3vw;
+
+    width: 22.2vw;
+    color: #fff;
+    align-items: center;
+}
+
+#currentSessionTitle {
+    color: #fff;
+    font-size: 2.4vh;
+}
+
+.currentSessionRevenue {
+    color: #FFC107;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.currentSessionData {
+    border-radius: 10px;
+    border: 2px solid #ffc107;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+    padding: 5px;
+}
+
+.cardBackground {
+    border: 2px solid #FFC107;
+
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cardMenu {
+    justify-content: space-evenly;
+    margin-top: 6vh;
+}
+
+.title {
+    color: #FFC107;
+
+    text-align: center;
+
+    font-size: 5vh;
+    align-items: center;
+}
+
+.cardIcon {
+
+    text-align: center;
+    align-items: center;
+
+    color: #FFC107;
+}
+
+.labels {
+    font-size: 2.3vh;
+
+    color: white;
+    justify-content: space-evenly;
+}
+
+.currentSessionIcon {
+    width: 2.8vw;
+    height: 5vh;
+
+    display: block;
+
+    background-color: #ffc107;
+
+    align-items: center;
+
+    transform: translateY(-30%);
+
+    text-align: center;
+
+    border-radius: 200px;
+    box-shadow: 1px 1px 10px 1px black;
+
+    font-size: 2.7vh;
+    color: #181818;
+}
+
+.goldIcon {
+    color: #FFC107;
+    font-size: 1.2vw;
+    margin-right: 0.1vw;
+}
+
+.ticketTip .hoverTicket {
+    visibility: hidden;
+    width: 7vw;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    right: 110%;
+}
+
+.ticketTip:hover .hoverTicket {
+    visibility: visible;
+    opacity: 1;
+  }
+
+.ticketTip .hoverTicket::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent white;
+}

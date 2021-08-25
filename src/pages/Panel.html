@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontawesome stylesheet-->
+    <script src="https://kit.fontawesome.com/9946dbb693.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <!-- Boostrap -->
+    <link href="../utils/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>RTS: Gerenciamento de Sessões</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="header row">
+            <div class="logo">
+                <img src="../images/icon.png" width="70vw" height="70vh">
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdownButton">
+                    <span class="fas fa-user-circle"></span>
+                    <div id="username">Administrador</div>
+                </div>
+                <div class="dropdownContent">
+                    <div class="dropdownItem" onclick="printPdf()">
+                        <span class="fa fa-file-alt"></span>
+                        <div>Imprimir sessão</div>
+                    </div>
+                    <div class="dropdownItem" onclick="logout()">
+                        <span class="fa fa-sign-out-alt"></span>
+                        <div>Sair da conta</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="organize">
+
+            <div class="cardContainer row">
+
+                <div class="revenueCard row">
+                    <div class="revenueIcon">
+                        <span class="fa fa-calendar-day"
+                            style="font-size: 2.7vh; color: #181818; margin-top: 10px;"></span>
+                    </div>
+
+                    <div class="column">
+                        <div class="revenueTitle">Último faturamento</div>
+                        <div id="todayRevenue" class="revenueLabel">R$ 0,00</div>
+                    </div>
+
+                </div>
+
+                <div class="revenueCard row">
+                    <div class="revenueIcon">
+                        <span class="fa fa-calendar-week"
+                            style="font-size: 2.7vh; color: #181818; margin-top: 10px;"></span>
+                    </div>
+                    <div class="column">
+                        <div class="revenueTitle">Faturamento da semana</div>
+                        <div id="weekRevenue" class="revenueLabel">R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div class="revenueCard row">
+                    <div class="revenueIcon">
+                        <span class="fa fa-calendar" style="font-size: 2.7vh; color: #181818; margin-top: 10px;"></span>
+                    </div>
+
+                    <div class="column">
+                        <div class="revenueTitle">Faturamento do mês</div>
+                        <div id="monthRevenue" class="revenueLabel">R$ 0,00</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="lButton" onclick="toggleNav()" title="Mostrar sessões anteriores">
+            <span class="fa fa-caret-left">
+            </span>
+        </div>
+
+        <div id="lNotification">
+            <span class="fa fa-bell" style="margin-right: 20px; color: #ffc107;">
+            </span>
+            Nova atualização recebida
+        </div>
+
+        <div id="lList">
+            <div id="lHeader">
+                <div id="arrowUp" onclick="arrowUp()">
+                    <span class="fa fa-arrow-up btnArrow"></span>
+                </div>
+                <div id="arrowDown" onclick="arrowDown()">
+                    <span class="fa fa-arrow-down btnArrow"></span>
+                </div>
+                <div id="lTitle">
+                    Sessões anteriores
+                </div>
+                <div id="lX" onclick="toggleNav()">
+                    <span class="fa fa-times"></span>
+                </div>
+            </div>
+
+            <div id="lSessions">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div id="organizeMenu">
+        <div class="background">
+            <div class="title" id="zap">
+                <label style="color: #ffc107;">Sessão</label>
+                <label class="blinking" id="currentSession">1</label>
+                <input class="input inputSession" id="searchSession" onkeydown="selectSession()">
+            </div>
+
+            <div class="cardMenu row">
+
+                <!-- <div id="currentSessionCard" class="column">
+                    <div class="currentSessionLabel" class="row">
+                        <div class="currentSessionIcon">
+                            <span class="fa fa-ticket" style="margin-top: 1.2vh;"></span></span>
+                        </div>
+                        <div class="column" style="transform: translateY(-30%);">
+                            <div id="currentSessionTitle">INGRESSOS</div>
+                            <div id="ticketRevenue" class="currentSessionRevenue">R$ 0,00</div>
+                        </div>
+                    </div>
+
+                    <div class="currentSessionData column">
+                        <div class="currentSessionCardLabel row">
+                            <label>Normal</label>
+                            <div class="labels">
+                                <label id="normalTicket">0</label>
+                            </div>
+                        </div>
+                        <div class="currentSessionCardLabel row">
+                            <label>VIP</label>
+                            <div class="labels">
+                                <label id="vipTicket">0</label>
+                            </div>
+                        </div>
+                        <div class="currentSessionCardLabel row">
+                            <label>VIP Diferença</label>
+                            <div class="labels">
+                                <label id="differenceTicket">0</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div id="currentSessionCard" class="column">
+                    <div class="currentSessionLabel" class="row">
+                        <div class="currentSessionIcon">
+                            <span class="fa fa-ticket" style="margin-top: 1.2vh;"></span></span>
+                        </div>
+                        <div class="column" style="transform: translateY(-30%);">
+                            <div id="currentSessionTitle">INGRESSOS</div>
+                            <div id="ticketRevenue" class="currentSessionRevenue">R$ 0,00</div>
+                        </div>
+                    </div>
+
+                    <div class="col cardBackground">
+                        <div class="row" style="margin-top: 3vh;">
+                            <div class="col">
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <label for="">HOMEM</label>
+                                    </div>
+                                    <label id="menTicket">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <label for="">MULHER</label>
+                                    </div>
+                                    <label id="womenTicket">0</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="labels row">
+                                    <div style="margin-left: -2.5vw;" class="cardIcon">
+                                        <label for="">VIP</label>
+                                    </div>
+                                    <label id="vipTicket">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <label for="">VIP DIFEREN.</label>
+                                    </div>
+                                    <label id="differenceTicket">0</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="currentSessionCard" class="column">
+                    <div class="currentSessionLabel" class="row">
+                        <div class="currentSessionIcon">
+                            <span class="fa fa-coins" style="margin-top: 1.2vh"></span>
+                        </div>
+                        <div class="column" style="transform: translateY(-30%);">
+                            <div id="currentSessionTitle">FICHAS</div>
+                            <div id="chipRevenue" class="currentSessionRevenue">0,00</div>
+                        </div>
+                    </div>
+
+                    <div class="col cardBackground">
+                        <div class="row">
+                            <div class="col">
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">1</label>
+                                    </div>
+                                    <label id="chip1">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">2</label>
+                                    </div>
+                                    <label id="chip2">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">5</label>
+                                    </div>
+                                    <label id="chip5">0</label>
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">10</label>
+                                    </div>
+                                    <label id="chip10">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">30</label>
+                                    </div>
+                                    <label id="chip30">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">50</label>
+                                    </div>
+                                    <label id="chip50">0</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">100</label>
+                                    </div>
+                                    <label id="chip100">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">300</label>
+                                    </div>
+                                    <label id="chip300">0</label>
+                                </div>
+                                <div class="labels row">
+                                    <div class="cardIcon">
+                                        <span class="fa fa-coins" style="margin-right: 0.5vw;"></span>
+                                        <label for="">500</label>
+                                    </div>
+                                    <label id="chip500">0</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="currentSessionCard" class="column">
+                    <div class="currentSessionLabel" class="row">
+                        <div class="currentSessionIcon">
+                            <span class="fa fa-cash-register" style="margin-top: 1.2vh"></span>
+                        </div>
+                        <div class="column" style="transform: translateY(-30%);">
+                            <div id="currentSessionTitle">CAIXA</div>
+                            <div id="totalRevenue" class="currentSessionRevenue">R$ 0,00</div>
+                        </div>
+                    </div>
+
+                    <div class="currentSessionData column">
+                        <div class="currentSessionCardLabel row">
+                            <label>Dinheiro</label>
+                            <div class="labels">
+                                <label id="cashRevenue">0</label>
+                            </div>
+                        </div>
+                        <div class="currentSessionCardLabel row">
+                            <label>Cartão</label>
+                            <div class="labels">
+                                <label id="cardRevenue">0</label>
+                            </div>
+                        </div>
+                        <div class="currentSessionCardLabel row">
+                            <label>Total</label>
+                            <div class="labels">
+                                <label id="revenue">0</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var $ = require('jquery')
+
+    const remote = require('electron').remote
+    const user = remote.getGlobal("username")
+
+    document.getElementById("username").innerText = user[0].toUpperCase() + user.slice(1).toLowerCase()
+
+    $("#currentSession").click(function () {
+        $("#currentSession").css("visibility", "hidden")
+        $("#searchSession").css("visibility", "visible")
+        $("#searchSession").val($("#currentSession").text());
+        $("#searchSession").focus()
+    });
+
+    $("#searchSession").focusout(function () {
+        $("#currentSession").css("visibility", "visible")
+        $("#searchSession").css("visibility", "hidden")
+
+        $("#currentSession").text($("#searchSession").val());
+        loadSessionMenu("#")
+    })
+
+    if (document.readyState === 'complete') {
+        init();
+    }
+</script>
+
+<script src="../scripts/Main.js"></script>
+<script src="../scripts/modules/Input.js"></script>
+
+<link href="../css/PanelStyle.css" rel="stylesheet">
+<link href="../css/MenuStyle.css" rel="stylesheet">
+<link href="../css/CardStyle.css" rel="stylesheet">
+<!-- <link href="../css/ListStyle.css" rel="stylesheet"> -->
+<link href="../css/NewListStyle.css" rel="stylesheet">
+<link href="../css/Lista.css" rel="stylesheet">
+<link href="../css/Dropdown.css" rel="stylesheet">
