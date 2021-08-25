@@ -1,21 +1,21 @@
 {
   "name": "r-panel",
   "version": "2.0.0",
-  "description": "Remulos panel cash flow",
+  "description": "System panel cash flow",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LCReleases/R-Panel.git"
+    "url": "git+https://github.com/LCReleases/R-Panel-2.git"
   },
   "author": "Lobo Codes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LCReleases/R-Panel/issues"
+    "url": "https://github.com/LCReleases/R-Panel-2/issues"
   },
-  "homepage": "https://github.com/LCReleases/R-Panel#readme",
+  "homepage": "https://github.com/LCReleases/R-Panel-2#readme",
   "build": {
     "extends": null,
     "asar": true,
@@ -24,11 +24,9 @@
     "publish": [
       {
         "provider": "github",
-        "repo": "R-Panel",
+        "repo": "R-Panel-2",
         "owner": "LCReleases",
         "releaseType": "release",
-        "private": true,
-        "token": "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"
       }
     ],
     "files": [
